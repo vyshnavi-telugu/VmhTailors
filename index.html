@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VMH Tailors - Dress Design Models</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom styles for Inter font and general body styling */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f2f5; /* Light gray background */
+            color: #333; /* Dark text color */
+        }
+        /* Ensure images fill their container nicely */
+        .design-image {
+            width: 100%;
+            height: 250px; /* Fixed height for consistency */
+            object-fit: cover; /* Cover the area, cropping if necessary */
+            border-radius: 0.5rem; /* Rounded corners for images */
+        }
+        /* Card hover effect */
+        .design-card:hover {
+            transform: translateY(-5px); /* Lift effect on hover */
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Stronger shadow */
+        }
+        /* Custom modal styling */
+        .modal-background {
+            background-color: rgba(0, 0, 0, 0.6); /* Darker overlay for modal */
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+    <!-- Header Section -->
+    <header class="bg-gradient-to-r from-purple-600 to-indigo-600 text-white p-6 shadow-lg rounded-b-lg">
+        <div class="container mx-auto text-center">
+            <h1 class="text-4xl md:text-5xl font-extrabold mb-2">VMH Tailors</h1>
+            <p class="text-xl md:text-2xl font-light">Kurnool - Your Style, Our Stitch.</p>
+            <p class="mt-4 text-lg">Explore our exquisite dress design models and find your perfect look!</p>
+        </div>
+    </header>
+
+    <!-- Main Content Section -->
+    <main class="container mx-auto p-6 flex-grow">
+        <!-- Dress Type Selection -->
+        <div id="dress-type-selection" class="mb-8 p-6 bg-white rounded-xl shadow-md text-center">
+            <h2 class="text-2xl font-bold mb-4 text-gray-800">Select Dress Type</h2>
+            <div class="relative inline-block w-full sm:w-1/2 lg:w-1/3">
+                <select id="dressType" class="block appearance-none w-full bg-white border border-gray-300 text-gray-700 py-3 px-4 pr-8 rounded-lg leading-tight focus:outline-none focus:bg-white focus:border-purple-500 shadow-sm">
+                    <option value="all">Show All Designs</option>
+                    <option value="anarkali">Anarkali Suits</option>
+                    <option value="lehenga">Lehengas</option>
+                    <option value="kurti">Kurtis</option>
+                    <option value="bridal">Bridal Wear</option>
+                    <option value="mens">Men's Wear</option>
+                    <option value="kids">Kids Wear</option>
+                    <option value="saree">Sarees</option>
+                    <option value="blouse">Blouses</option>
+                    <option value="gown">Gowns</option>
+                    <option value="salwar">Salwar Kameez</option>
+                    <option value="indo-western">Indo-Western</option>
+                    <option value="party-wear">Party Wear</option>
+                    <option value="traditional">Traditional Wear</option>
+                    <option value="casual">Casual Wear</option>
+                    <option value="formal">Formal Wear</option>
+                </select>
+                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dress Models Grid -->
+        <div id="design-models-section" class="mb-8">
+            <h2 class="text-3xl font-bold text-center mb-8 text-gray-800">Select Your Design Model</h2>
+            <div id="design-models-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                <!-- Existing Design Model Cards -->
+                <div class="design-card bg-white rounded-xl shadow-md p-4 transition-all duration-300 transform hover:scale-105 cursor-pointer" data-type="anarkali">
+                    <img src="https://placehold.co/400x250/a78bfa/ffffff?text=Elegant+Anarkali" alt="Elegant Anarkali Design" class="design-image mb-4">
+                    <h3 class="text-xl font-semibold mb-2 text-gray-900">Elegant Anarkali Suit</h3>
+                    <p class="text-gray-600 text-sm">A timeless classic with intricate embroidery and flowing silhouette.</p>
+                    <button class="select-design-btn mt-4 w-full bg-purple-500 text-white py-2 px-4 rounded-md hover:bg-purple-600 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-75 transition-colors duration-200" data-design-name="Elegant Anarkali Suit">
+                        Select
+                    </button>
+                </div>
+
+                <div class="design-card bg-white rounded-xl shadow-md p-4 transition-all duration-300 transform hover:scale-105 cursor-pointer" data-type="lehenga">
+                    <img src="https://placehold.co/400x250/60a5fa/ffffff?text=Modern+Lehenga" alt="Modern Lehenga Design" class="design-image mb-4">
+                    <h3 class="text-xl font-semibold mb-2 text-gray-900">Contemporary Lehenga</h3>
+                    <p class="text-gray-600 text-sm">Perfect for festive occasions, featuring modern cuts and vibrant colors.</p>
+                    <button class="select-design-btn mt-4 w-full bg-purple-500 text-white py-2 px-4 rounded-md hover:bg-purple-600 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-75 transition-colors duration-200" data-design-name="Contemporary Lehenga">
+                        Select
+                    </button>
+                </div>
+
+                <div class="design-card bg-white rounded-xl shadow-md p-4 transition-all duration-300 transform hover:scale-105 cursor-pointer" data-type="kurti">
+                    <img src="https://placehold.co/400x250/fbbf24/ffffff?text=Chic+Kurti" alt="Chic Kurti Design" class="design-image mb-4">
+                    <h3 class="text-xl font-semibold mb-2 text-gray-900">Chic Everyday Kurti</h3>
+                    <p class="text-gray-600 text-sm">Comfortable yet stylish, ideal for daily wear or casual outings.</p>
+                    <button class="select-design-btn mt-4 w-full bg-purple-500 text-white py-2 px-4 rounded-md hover:bg-purple-600 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-75 transition-colors duration-200" data-design-name="Chic Everyday Kurti">
+                        Select
+                    </button>
+                </div>
+
+                <div class="design-card bg-white rounded-xl shadow-md p-4 transition-all duration-300 transform hover:scale-105 cursor-pointer" data-type="bridal">
+                    <img src="https://placehold.co/400x250/34d399/ffffff?text=Bridal+Gown" alt="Bridal Gown Design" class="design-image mb-4">
+                    <h3 class="text-xl font-semibold mb-2 text-gray-900">Exquisite Bridal Gown</h3>
+                    <p class="text-gray-600 text-sm">A breathtaking gown designed for your special day, custom-fitted.</p>
+                    <button class="select-design-btn mt-4 w-full bg-purple-500 text-white py-2 px-4 rounded-md hover:bg-purple-600 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-75 transition-colors duration-200" data-design-name="Exquisite Bridal Gown">
+                        Select
+                    </button>
+                </div>
+
+                <div class="design-card bg-white rounded-xl shadow-md p-4 transition-all duration-300 transform hover:scale-105 cursor-pointer" data-type="mens">
+                    <img src="https://placehold.co/400x250/f87171/ffffff?text=Mens+Sherwani" alt="Men's Sherwani Design" class="design-image mb-4">
+                    <h3 class="text-xl font-semibold mb-2 text-gray-900">Traditional Men's Sherwani</h3>
+                    <p class="text-gray-600 text-sm">Elegant and regal, perfect for weddings and formal events.</p>
+                    <button class="select-design-btn mt-4 w-full bg-purple-500 text-white py-2 px-4 rounded-md hover:bg-purple-600 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-75 transition-colors duration-200" data-design-name="Traditional Men's Sherwani">
+                        Select
+                    </button>
+                </div>
+
+                <div class="design-card bg-white rounded-xl shadow-md p-4 transition-all duration-300 transform hover:scale-105 cursor-pointer" data-type="kids">
+                    <img src="https://placehold.co/400x250/818cf8/ffffff?text=Kids+Wear" alt="Kids Wear Design" class="design-image mb-4">
+                    <h3 class="text-xl font-semibold mb-2 text-gray-900">Adorable Kids Ethnic Wear</h3>
+                    <p class="text-gray-600 text-sm">Comfortable and cute designs for your little ones.</p>
+                    <button class="select-design-btn mt-4 w-full bg-purple-500 text-white py-2 px-4 rounded-md hover:bg-purple-600 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-75 transition-colors duration-200" data-design-name="Adorable Kids Ethnic Wear">
+                        Select
+                    </button>
+                </div>
+
+                <div class="design-card bg-white rounded-xl shadow-md p-4 transition-all duration-300 transform hover:scale-105 cursor-pointer" data-type="saree">
+                    <img src="https://placehold.co/400x250/fca5a5/ffffff?text=Party+Wear+Saree" alt="Party Wear Saree Design" class="design-image mb-4">
+                    <h3 class="text-xl font-semibold mb-2 text-gray-900">Glamorous Party Wear Saree</h3>
+                    <p class="text-gray-600 text-sm">Drape yourself in elegance with our latest saree collections.</p>
+                    <button class="select-design-btn mt-4 w-full bg-purple-500 text-white py-2 px-4 rounded-md hover:bg-purple-600 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-75 transition-colors duration-200" data-design-name="Glamorous Party Wear Saree">
+                        Select
+                    </button>
+                </div>
+
+                <div class="design-card bg-white rounded-xl shadow-md p-4 transition-all duration-300 transform hover:scale-105 cursor-pointer" data-type="blouse">
+                    <img src="https://placehold.co/400x250/a5b3c2/ffffff?text=Custom+Blouse" alt="Custom Blouse Design" class="design-image mb-4">
+                    <h3 class="text-xl font-semibold mb-2 text-gray-900">Custom Designer Blouse</h3>
+                    <p class="text-gray-600 text-sm">Tailored to perfection, enhancing your saree's beauty.</p>
+                    <button class="select-design-btn mt-4 w-full bg-purple-500 text-white py-2 px-4 rounded-md hover:bg-purple-600 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-75 transition-colors duration-200" data-design-name="Custom Designer Blouse">
+                        Select
+                    </button>
+                </div>
+
+                <div class="design-card bg-white rounded-xl shadow-md p-4 transition-all duration-300 transform hover:scale-105 cursor-pointer" data-type="gown">
+                    <img src="https://placehold.co/400x250/8b5cf6/ffffff?text=Evening+Gown" alt="Evening Gown Design" class="design-image mb-4">
+                    <h3 class="text-xl font-semibold mb-2 text-gray-900">Elegant Evening Gown</h3>
+                    <p class="text-gray-600 text-sm">Sophisticated designs for formal events and grand celebrations.</p>
+                    <button class="select-design-btn mt-4 w-full bg-purple-500 text-white py-2 px-4 rounded-md hover:bg-purple-600 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-75 transition-colors duration-200" data-design-name="Elegant Evening Gown">
+                        Select
+                    </button>
+                </div>
+
+                <div class="design-card bg-white rounded-xl shadow-md p-4 transition-all duration-300 transform hover:scale-105 cursor-pointer" data-type="salwar">
+                    <img src="https://placehold.co/400x250/d946ef/ffffff?text=Casual+Salwar" alt="Casual Salwar Kameez Design" class="design-image mb-4">
+                    <h3 class="text-xl font-semibold mb-2 text-gray-900">Comfortable Salwar Kameez</h3>
+                    <p class="text-gray-600 text-sm">Everyday wear with a touch of traditional elegance.</p>
+                    <button class="select-design-btn mt-4 w-full bg-purple-500 text-white py-2 px-4 rounded-md hover:bg-purple-600 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-75 transition-colors duration-200" data-design-name="Comfortable Salwar Kameez">
+                        Select
+                    </button>
+                </div>
+
+                <div class="design-card bg-white rounded-xl shadow-md p-4 transition-all duration-300 transform hover:scale-105 cursor-pointer" data-type="indo-western">
+                    <img src="https://placehold.co/400x250/10b981/ffffff?text=Indo-Western" alt="Indo-Western Fusion Design" class="design-image mb-4">
+                    <h3 class="text-xl font-semibold mb-2 text-gray-900">Indo-Western Fusion Outfit</h3>
+                    <p class="text-gray-600 text-sm">Blend of traditional and contemporary styles for a unique look.</p>
+                    <button class="select-design-btn mt-4 w-full bg-purple-500 text-white py-2 px-4 rounded-md hover:bg-purple-600 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-75 transition-colors duration-200" data-design-name="Indo-Western Fusion Outfit">
+                        Select
+                    </button>
+                </div>
+
+                <div class="design-card bg-white rounded-xl shadow-md p-4 transition-all duration-300 transform hover:scale-105 cursor-pointer" data-type="mens">
+                    <img src="https://placehold.co/400x250/3b82f6/ffffff?text=Mens+Suit" alt="Classic Men's Suit Design" class="design-image mb-4">
+                    <h3 class="text-xl font-semibold mb-2 text-gray-900">Classic Men's Suit</h3>
+                    <p class="text-gray-600 text-sm">Sharp, tailored suits for business or special occasions.</p>
+                    <button class="select-design-btn mt-4 w-full bg-purple-500 text-white py-2 px-4 rounded-md hover:bg-purple-600 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-75 transition-colors duration-200" data-design-name="Classic Men's Suit">
+                        Select
+                    </button>
+                </div>
+
+                <!-- New Dress Model Cards -->
+
+                <div class="design-card bg-white rounded-xl shadow-md p-4 transition-all duration-300 transform hover:scale-105 cursor-pointer" data-type="party-wear">
+                    <img src="https://placehold.co/400x250/ec4899/ffffff?text=Sequined+Dress" alt="Sequined Party Dress" class="design-image mb-4">
+                    <h3 class="text-xl font-semibold mb-2 text-gray-900">Sparkling Sequined Dress</h3>
+                    <p class="text-gray-600 text-sm">Shine bright at any party with this dazzling sequined design.</p>
+                    <button class="select-design-btn mt-4 w-full bg-purple-500 text-white py-2 px-4 rounded-md hover:bg-purple-600 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-75 transition-colors duration-200" data-design-name="Sparkling Sequined Dress">
+                        Select
+                    </button>
+                </div>
+
+                <div class="design-card bg-white rounded-xl shadow-md p-4 transition-all duration-300 transform hover:scale-105 cursor-pointer" data-type="traditional">
+                    <img src="https://placehold.co/400x250/ef4444/ffffff?text=Kanjivaram+Saree" alt="Traditional Kanjivaram Saree" class="design-image mb-4">
+                    <h3 class="text-xl font-semibold mb-2 text-gray-900">Traditional Kanjivaram Saree</h3>
+                    <p class="text-gray-600 text-sm">Rich silk saree with classic South Indian motifs, perfect for weddings.</p>
+                    <button class="select-design-btn mt-4 w-full bg-purple-500 text-white py-2 px-4 rounded-md hover:bg-purple-600 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-75 transition-colors duration-200" data-design-name="Traditional Kanjivaram Saree">
+                        Select
+                    </button>
+                </div>
+
+                <div class="design-card bg-white rounded-xl shadow-md p-4 transition-all duration-300 transform hover:scale-105 cursor-pointer" data-type="casual">
+                    <img src="https://placehold.co/400x250/22c55e/ffffff?text=Cotton+Kurti" alt="Casual Cotton Kurti" class="design-image mb-4">
+                    <h3 class="text-xl font-semibold mb-2 text-gray-900">Comfortable Cotton Kurti</h3>
+                    <p class="text-gray-600 text-sm">Lightweight and breathable, ideal for everyday comfort and style.</p>
+                    <button class="select-design-btn mt-4 w-full bg-purple-500 text-white py-2 px-4 rounded-md hover:bg-purple-600 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-75 transition-colors duration-200" data-design-name="Comfortable Cotton Kurti">
+                        Select
+                    </button>
+                </div>
+
+                <div class="design-card bg-white rounded-xl shadow-md p-4 transition-all duration-300 transform hover:scale-105 cursor-pointer" data-type="formal">
+                    <img src="https://placehold.co/400x250/0ea5e9/ffffff?text=Formal+Blazer" alt="Formal Blazer Dress" class="design-image mb-4">
+                    <h3 class="text-xl font-semibold mb-2 text-gray-900">Sharp Formal Blazer Dress</h3>
+                    <p class="text-gray-600 text-sm">A sophisticated choice for professional settings or business events.</p>
+                    <button class="select-design-btn mt-4 w-full bg-purple-500 text-white py-2 px-4 rounded-md hover:bg-purple-600 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-75 transition-colors duration-200" data-design-name="Sharp Formal Blazer Dress">
+                        Select
+                    </button>
+                </div>
+
+                <div class="design-card bg-white rounded-xl shadow-md p-4 transition-all duration-300 transform hover:scale-105 cursor-pointer" data-type="bridal">
+                    <img src="https://placehold.co/400x250/c084fc/ffffff?text=Bridal+Lehenga" alt="Bridal Lehenga Choli" class="design-image mb-4">
+                    <h3 class="text-xl font-semibold mb-2 text-gray-900">Grand Bridal Lehenga Choli</h3>
+                    <p class="text-gray-600 text-sm">Heavily embellished lehenga for a truly magnificent bridal look.</p>
+                    <button class="select-design-btn mt-4 w-full bg-purple-500 text-white py-2 px-4 rounded-md hover:bg-purple-600 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-75 transition-colors duration-200" data-design-name="Grand Bridal Lehenga Choli">
+                        Select
+                    </button>
+                </div>
+
+                <div class="design-card bg-white rounded-xl shadow-md p-4 transition-all duration-300 transform hover:scale-105 cursor-pointer" data-type="mens">
+                    <img src="https://placehold.co/400x250/6d28d9/ffffff?text=Mens+Jodhpuri" alt="Men's Jodhpuri Suit" class="design-image mb-4">
+                    <h3 class="text-xl font-semibold mb-2 text-gray-900">Regal Men's Jodhpuri Suit">
+                        Select
+                    </button>
+                </div>
+
+                <div class="design-card bg-white rounded-xl shadow-md p-4 transition-all duration-300 transform hover:scale-105 cursor-pointer" data-type="kids">
+                    <img src="https://placehold.co/400x250/f97316/ffffff?text=Kids+Frock" alt="Kids Party Frock" class="design-image mb-4">
+                    <h3 class="text-xl font-semibold mb-2 text-gray-900">Charming Kids Party Frock</h3>
+                    <p class="text-gray-600 text-sm">Cute and comfortable frocks for your little one's celebrations.</p>
+                    <button class="select-design-btn mt-4 w-full bg-purple-500 text-white py-2 px-4 rounded-md hover:bg-purple-600 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-75 transition-colors duration-200" data-design-name="Charming Kids Party Frock">
+                        Select
+                    </button>
+                </div>
+
+                <div class="design-card bg-white rounded-xl shadow-md p-4 transition-all duration-300 transform hover:scale-105 cursor-pointer" data-type="saree">
+                    <img src="https://placehold.co/400x250/db2777/ffffff?text=Designer+Saree" alt="Contemporary Designer Saree" class="design-image mb-4">
+                    <h3 class="text-xl font-semibold mb-2 text-gray-900">Contemporary Designer Saree</h3>
+                    <p class="text-gray-600 text-sm">Modern drapes and patterns for a chic and sophisticated look.</p>
+                    <button class="select-design-btn mt-4 w-full bg-purple-500 text-white py-2 px-4 rounded-md hover:bg-purple-600 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-75 transition-colors duration-200" data-design-name="Contemporary Designer Saree">
+                        Select
+                    </button>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Contact Details Section (Hidden by default) -->
+        <div id="contact-details-section" class="hidden p-6 bg-white rounded-xl shadow-md max-w-lg mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-6 text-gray-800">Enter Your Details</h2>
+            <p class="text-center text-gray-600 mb-6">You have selected: <span id="selected-design-name" class="font-semibold text-purple-700"></span>. Please provide your contact information, and we'll get in touch!</p>
+
+            <form id="contact-form" class="space-y-4">
+                <div>
+                    <label for="customerName" class="block text-sm font-medium text-gray-700 mb-1">Your Name</label>
+                    <input type="text" id="customerName" name="customerName" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-purple-500 focus:border-purple-500 sm:text-sm">
+                </div>
+                <div>
+                    <label for="customerPhone" class="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
+                    <input type="tel" id="customerPhone" name="customerPhone" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-purple-500 focus:border-purple-500 sm:text-sm">
+                </div>
+                <div>
+                    <label for="customerEmail" class="block text-sm font-medium text-gray-700 mb-1">Email Address (Optional)</label>
+                    <input type="email" id="customerEmail" name="customerEmail" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-purple-500 focus:border-purple-500 sm:text-sm">
+                </div>
+                <button type="submit" class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-lg font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors duration-200">
+                    Submit Details
+                </button>
+            </form>
+        </div>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="bg-gray-800 text-white p-6 text-center mt-8 rounded-t-lg">
+        <p>&copy; 2025 VMH Tailors, Kurnool. All rights reserved.</p>
+        <p class="mt-2 text-sm">Contact us: +91 98765 43210 | info@vmhtailors.com</p>
+    </footer>
+
+    <!-- Custom Message Box Modal -->
+    <div id="messageBoxModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden modal-background">
+        <div class="bg-white p-6 rounded-lg shadow-xl max-w-sm w-full text-center">
+            <p id="messageBoxText" class="text-lg font-semibold mb-4 text-gray-800"></p>
+            <button id="messageBoxCloseBtn" class="mt-4 bg-purple-500 text-white py-2 px-4 rounded-md hover:bg-purple-600 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-75 transition-colors duration-200">
+                OK
+            </button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const dressTypeSelect = document.getElementById('dressType');
+            const designModelsGrid = document.getElementById('design-models-grid');
+            const designCards = document.querySelectorAll('.design-card');
+            const selectDesignButtons = document.querySelectorAll('.select-design-btn');
+            const dressTypeSelection = document.getElementById('dress-type-selection');
+            const designModelsSection = document.getElementById('design-models-section');
+            const contactDetailsSection = document.getElementById('contact-details-section');
+            const selectedDesignNameSpan = document.getElementById('selected-design-name');
+            const contactForm = document.getElementById('contact-form');
+
+            // Message box elements
+            const messageBoxModal = document.getElementById('messageBoxModal');
+            const messageBoxText = document.getElementById('messageBoxText');
+            const messageBoxCloseBtn = document.getElementById('messageBoxCloseBtn');
+
+            /**
+             * Shows a custom message box modal.
+             * @param {string} message - The message to display in the modal.
+             */
+            function showMessageBox(message) {
+                messageBoxText.textContent = message;
+                messageBoxModal.classList.remove('hidden');
+            }
+
+            // Close message box when OK button is clicked
+            messageBoxCloseBtn.addEventListener('click', () => {
+                messageBoxModal.classList.add('hidden');
+            });
+
+            /**
+             * Filters the dress design models based on the selected type.
+             */
+            function filterDesigns() {
+                const selectedType = dressTypeSelect.value;
+
+                designCards.forEach(card => {
+                    const cardType = card.dataset.type;
+                    if (selectedType === 'all' || cardType === selectedType) {
+                        card.classList.remove('hidden'); // Show the card
+                    } else {
+                        card.classList.add('hidden'); // Hide the card
+                    }
+                });
+            }
+
+            // Event listener for dress type selection change
+            dressTypeSelect.addEventListener('change', filterDesigns);
+
+            // Initial filter call to show all designs by default
+            filterDesigns();
+
+            // Event listeners for "Select" buttons on design cards
+            selectDesignButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const designName = button.dataset.designName;
+                    selectedDesignNameSpan.textContent = designName; // Update the selected design name in the contact section
+
+                    // Hide selection sections and show contact section
+                    dressTypeSelection.classList.add('hidden');
+                    designModelsSection.classList.add('hidden');
+                    contactDetailsSection.classList.remove('hidden');
+
+                    // Scroll to the contact section
+                    contactDetailsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                });
+            });
+
+            // Event listener for contact form submission
+            contactForm.addEventListener('submit', (event) => {
+                event.preventDefault(); // Prevent default form submission
+
+                const customerName = document.getElementById('customerName').value;
+                const customerPhone = document.getElementById('customerPhone').value;
+                const customerEmail = document.getElementById('customerEmail').value;
+                const selectedDesign = selectedDesignNameSpan.textContent;
+
+                // Log the details to the console (for demonstration purposes)
+                console.log('Customer Details Submitted:');
+                console.log('Selected Design:', selectedDesign);
+                console.log('Name:', customerName);
+                console.log('Phone:', customerPhone);
+                console.log('Email:', customerEmail || 'Not provided');
+
+                // Show a success message using the custom modal
+                showMessageBox(`Thank you, ${customerName}! Your details for the "${selectedDesign}" design have been received. We will contact you shortly on ${customerPhone}.`);
+
+                // Optionally, reset the form and navigate back to the design selection
+                contactForm.reset();
+                // You might want to add a button in the modal to go back to selection or reload the page
+                // For now, let's just keep the success message visible until the user closes it.
+            });
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+
+Deep Research
+
+
